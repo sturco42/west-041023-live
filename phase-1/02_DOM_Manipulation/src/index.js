@@ -101,4 +101,23 @@ function formatPrice(price) {
     //   <button>Delete</button>
     // </li>
 
-  
+  function renderBook(book) {
+    const li = document.createElement('li')
+    li.className = 'list-li'
+    const h3 = document.createElement('h3')
+    h3.innerText = book.title
+    const pAuthor = document.createElement('p')
+    p.innerText = book.author
+    const pPrice = document.createElement('p')
+    pPrice.innerText = formatPrice(book.price)
+    const img = document.createElement('img')
+    img.src = book.imageUrl
+    img.alt = book.title
+    const button = document.createElement('button')
+    button.innerText = 'Delete'
+    li.append(h3, pAuthor, pPrice, img, button)
+    const ulList = document.getElemenetById('book-list')
+    ulList.appendChild(li)
+  }
+
+  bookStore.inventory.forEach(bookObj => renderBook(bookObj))
