@@ -83,7 +83,7 @@ function formatPrice(price) {
             h1.remove()
         }
         // removeEl()
-        
+
 // 💡 Exercise After Break
 
     // create a function called renderBook(book)
@@ -107,7 +107,7 @@ function formatPrice(price) {
     const h3 = document.createElement('h3')
     h3.innerText = book.title
     const pAuthor = document.createElement('p')
-    p.innerText = book.author
+    pAuthor.innerText = book.author
     const pPrice = document.createElement('p')
     pPrice.innerText = formatPrice(book.price)
     const img = document.createElement('img')
@@ -116,8 +116,24 @@ function formatPrice(price) {
     const button = document.createElement('button')
     button.innerText = 'Delete'
     li.append(h3, pAuthor, pPrice, img, button)
-    const ulList = document.getElemenetById('book-list')
+    const ulList = document.getElementById('book-list')
     ulList.appendChild(li)
   }
 
   bookStore.inventory.forEach(bookObj => renderBook(bookObj))
+
+    function renderBookAsHTML(book) {
+        const ulList = document.getElementById("book-list")
+        ulList.innerHTML += `
+        <li class="list-li">
+            <h3>${book.title}</h3>
+            <p>${book.author}</p>
+            <p>${formatPrice(book.price)}</p>
+            <img src=${book.imageUrl} alt=${book.title}/>
+            <button>Delete</button>
+        </li>
+        `
+    }
+
+    bookStore.inventory.forEach(bookObj => renderBookAsHTML(bookObj))
+    // bookStore.inventory.forEach(renderBook)
